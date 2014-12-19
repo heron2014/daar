@@ -25,9 +25,9 @@ def single_user(request, username):
 
 @login_required
 def edit_profile(request):
-    user = request.user
-    user_profile = UserProfile.objects.get(user=user)
-    user_profile_form = UserProfileForm(request.POST or None, request.FILES or None, instance=user_profile)
+
+    # user_profile = UserProfile.objects.get(user=request.user)
+    user_profile_form = UserProfileForm(request.POST or None, request.FILES or None, instance=request.user)
     if user_profile_form.is_valid():
         form = user_profile_form.save(commit=False)
         form.save()
