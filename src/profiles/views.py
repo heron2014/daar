@@ -45,7 +45,8 @@ def edit_profile(request):
     if user_profile_form.is_valid():
         form = user_profile_form.save(commit=False)
         form.save()
-    
+    else:
+        user_profile_form = UserProfileForm()
 
     return render(request, 'profiles/edit_profile.html', {'user_profile_form': user_profile_form,
                                                                })
