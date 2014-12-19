@@ -12,7 +12,7 @@ class UserProfile(models.Model):
         return self.user.username
 
 
-def create_profile(sender, instance, created, **kwargs):
-    if created:
-        profile, created = UserProfile.objects.get_or_create(user=instance)
-post_save.connect(create_profile, sender=User)
+# def create_profile(sender, instance, created, **kwargs):
+#     if created:
+#         profile, created = UserProfile.objects.get_or_create(user=instance)
+# post_save.connect(create_profile, sender=User)
