@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+        {% block content %}
+
+        <form method="POST" action="" enctype="multipart/form-data">{% csrf_token %}
+
+            {{ user_profile_form }}
+            <input class="btn btn-success" type="submit" value="update" >
+        </form>
+
+        {% endblock %}
