@@ -3,4 +3,9 @@
         {% block content %}
         <li>{{ single_user }}</li>
         <li>{{ single_user.userprofile.website }}</li>
+        <img src="{{ MEDIA_URL}}{{ single_user.userprofile.picture }}" /><br />
+
+        {% if single_user.username == user.username %}
+        <a href="{% url 'edit_profile' %}" >Edit</a>
+        {% endif %}
         {% endblock %}
