@@ -6,6 +6,7 @@ from django.db.models.signals import post_save
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
     website = models.URLField(blank=True)
+    bio = models.CharField(max_length=180, blank=True, null=True)
     picture = models.ImageField(upload_to='profile_images', blank=True, null=True)
 
     def __unicode__(self):

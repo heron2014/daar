@@ -3,8 +3,12 @@
         {% block content %}
         <li>{{ single_user }}</li>
         <li>{{ single_user.userprofile.website }}</li>
+        {% if single_user.userprofile.bio %}
+        <p>{{ single_user.userprofile.bio }}</p>
+        {% endif %}
+        {% if single_user.userprofile.picture %}
         <img src="{{ MEDIA_URL}}{{ single_user.userprofile.picture }}" /><br />
-
+        {% endif %}
         {% if single_user.username == user.username %}
         <a href="{% url 'edit_profile' %}" >Edit</a>
         {% endif %}
