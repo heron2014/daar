@@ -23,14 +23,15 @@ def single_user(request, username):
     context = {'single_user': user}
     return render(request, 'profiles/single_user.html', context)
 
-
+@login_required
 def edit_profile(request):
     user = request.user
     # u = User.objects.get(username=user)
     try:
-
         u_p = UserProfile.objects.get(user=user)
     except UserProfile.DoesNotExist:
+        u_p = UserProfile.objects.create(user=user)
+    except:
         u_p = None
     user_profile_form = UserProfileForm(request.POST or None, request.FILES or None, instance=u_p)
     if user_profile_form.is_valid():
