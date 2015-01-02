@@ -29,10 +29,13 @@ def edit_profile(request):
     # u = User.objects.get(username=user)
     try:
         u_p = UserProfile.objects.get(user=user)
+    except UserProfile.MultipleObjectsReturned:
+        u_p = UserProfile.objects.filter(user=user)[0]
     except UserProfile.DoesNotExist:
         u_p = UserProfile.objects.create(user=user)
     except:
         u_p = None
+
     user_profile_form = UserProfileForm(request.POST or None, request.FILES or None, instance=u_p)
     if user_profile_form.is_valid():
         u_p_form = user_profile_form.save(commit=False)
