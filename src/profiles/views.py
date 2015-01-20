@@ -39,7 +39,7 @@ def edit_profile(request):
     user_profile_form = UserProfileForm(request.POST or None, request.FILES or None, instance=u_p)
     if user_profile_form.is_valid():
         u_p_form = user_profile_form.save(commit=False)
-        u_p_form.user = request.user
+
         u_p_form.save()
         return HttpResponseRedirect('/')
     else:
